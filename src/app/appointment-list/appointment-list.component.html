@@ -1,14 +1,33 @@
 <div>
+  <!-- title input -->
   <input
     type="text"
     [(ngModel)]="newAppointmentTitle"
     placeholder="Appointment description"
+    required
   />
+  <!-- title input -->
+
+  <!-- date input -->
   <input
     type="date"
+    pattern="\d{4}-\d{2}-\d{2}"
+    min="2000-01-01"
+    max="2035-12-30"
     [(ngModel)]="newAppointmentDate"
-    placeholder="Appointment date"
+    placeholder="dd-mm-yyyy Appointment date"
+    required
   />
+  <!-- date input -->
 
-  <button type="button">Add</button>
+  <!-- add button -->
+  <button type="button" (click)="addAppointment()">Add</button>
+  <!-- add button -->
 </div>
+
+<hr />
+<ul>
+  <li *ngFor="let appointment of appointments">
+    {{ appointment.title }} | {{ appointment.date | date : "dd/MM/yyyy" }}
+  </li>
+</ul>
