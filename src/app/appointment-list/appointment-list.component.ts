@@ -53,4 +53,13 @@ export class AppointmentListComponent implements OnInit {
     // console.log('Deleted appointment index =>', index);
     // console.log('Deleted appointment object =>', appointment, '\n');
   }
+
+  // updating appointment
+  updateAppointment(index: number, appointment: Appointment) {
+    console.log('clicked index => ', {
+      id: appointment.id,
+      title: appointment.title,
+      date: appointment.date,
+    });
+  }
 }
