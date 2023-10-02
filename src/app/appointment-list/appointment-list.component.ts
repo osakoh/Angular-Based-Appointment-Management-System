@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+// ngOnInit is a life cycle hook called by Angular to indicate that Angular is done creating the component OR
+// A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive/component
+import { Component, OnInit } from '@angular/core';
 import { Appointment } from '../models/appointment';
 
 @Component({
@@ -6,11 +8,19 @@ import { Appointment } from '../models/appointment';
   templateUrl: './appointment-list.component.html',
   styleUrls: ['./appointment-list.component.css'],
 })
-export class AppointmentListComponent {
+export class AppointmentListComponent implements OnInit {
   newAppointmentTitle: string = '';
   newAppointmentDate: Date = new Date();
 
   appointments: Appointment[] = [];
+
+  // OnInit: A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive/component
+  ngOnInit(): void {
+    // check for local storage value
+    let savedAppointments = localStorage.getItem('appointments');
+
+    this.appointments = savedAppointments ? JSON.parse(savedAppointments) : [];
+  }
 
   // add button function
   addAppointment() {
