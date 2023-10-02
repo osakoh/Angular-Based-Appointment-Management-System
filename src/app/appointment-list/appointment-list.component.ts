@@ -26,9 +26,13 @@ export class AppointmentListComponent {
       // reset input fields
       this.newAppointmentTitle = '';
       this.newAppointmentDate = new Date();
-
-      // alert
-      alert(this.appointments.length);
     }
+  }
+
+  // delete appointment
+  deleteAppointment(index: number, appointment: object) {
+    this.appointments.splice(index, 1);
+    console.log('Deleted appointment index =>', index);
+    console.log('Deleted appointment object =>', appointment);
   }
 }

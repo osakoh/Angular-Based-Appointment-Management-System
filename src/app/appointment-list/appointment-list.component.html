@@ -27,7 +27,10 @@
 
 <hr />
 <ul>
-  <li *ngFor="let appointment of appointments">
+  <li *ngFor="let appointment of appointments; index as i">
     {{ appointment.title }} | {{ appointment.date | date : "dd/MM/yyyy" }}
+    <button type="button" (click)="deleteAppointment(i, appointment)">
+      Delete
+    </button>
   </li>
 </ul>
